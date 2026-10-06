@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Durgesh Pathak | Full Stack MERN Developer & AI / RAG Engineer</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-[#0b0f19] text-slate-800 dark:text-slate-200 antialiased selection:bg-indigo-500 selection:text-white relative">
+
+  <!-- Ambient blur glow (Dark mode accent) -->
+  <div class="hidden dark:block fixed top-0 left-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[110px] pointer-events-none -z-10"></div>
+  <div class="hidden dark:block fixed bottom-1/4 right-10 w-96 h-96 bg-cyan-600/10 rounded-full blur-[110px] pointer-events-none -z-10"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="text-xl font-extrabold tracking-tight flex items-center gap-2 group">
+        <span class="text-slate-900 dark:text-white">Durgesh<span class="text-indigo-600 dark:text-indigo-400">.dev</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About</a>
+        <a href="#skills" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Tech Arsenal</a>
+        <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
+        <a href="#education" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Education</a>
+        <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+      </div>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-3">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition">
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5 hidden pointer-events-none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5 block pointer-events-none"></i>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="hidden lg:inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-lg shadow-indigo-600/25">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i> Let's Talk
+        </a>
+
+        <!-- Mobile Menu Trigger -->
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition focus:outline-none cursor-pointer" aria-label="Toggle Menu">
+          <i data-lucide="menu" id="menuIcon" class="w-6 h-6 pointer-events-none"></i>
+          <i data-lucide="x" id="closeIcon" class="w-6 h-6 hidden pointer-events-none"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 pt-3 pb-6 space-y-3 glass-nav border-t border-slate-200 dark:border-slate-800 text-sm font-medium shadow-xl">
+      <a href="#about" class="mobile-nav-link block py-2 text-slate-700 dark:text-slate-300 hover:text-indigo-600 font-medium">About</a>
+      <a href="#skills" class="mobile-nav-link block py-2 text-slate-700 dark:text-slate-300 hover:text-indigo-600 font-medium">Tech Arsenal</a>
+      <a href="#projects" class="mobile-nav-link block py-2 text-slate-700 dark:text-slate-300 hover:text-indigo-600 font-medium">Projects</a>
+      <a href="#education" class="mobile-nav-link block py-2 text-slate-700 dark:text-slate-300 hover:text-indigo-600 font-medium">Education</a>
+      <a href="#contact" class="mobile-nav-link block py-2 text-slate-700 dark:text-slate-300 hover:text-indigo-600 font-medium">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" class="mobile-nav-link block w-full text-center py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-semibold shadow-md">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 w-full grid md:grid-cols-12 gap-12 items-center">
+      
+      <!-- Bio & Highlights -->
+      <div class="md:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:indigo-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Open for SDE Internships & MERN Stack Roles
+        </div>
+
+        <div>
+          <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+            Hi, I'm Durgesh Pathak
+          </h1>
+          <p class="text-lg sm:text-xl font-semibold text-slate-700 dark:text-slate-300 mt-2">
+            Full-Stack <span class="text-indigo-600 dark:text-indigo-400">MERN Developer</span> &bull; DSA Problem Solver &bull; <span class="bg-gradient-to-r from-cyan-500 to-indigo-500 bg-clip-text text-transparent">AI & RAG Enthusiast</span>
+          </p>
+        </div>
+
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
+          Undergraduate Computer Science Engineer (<strong class="text-slate-900 dark:text-slate-200">B.Tech 2023–2027</strong> at Khwaja Moinuddin Chishti Language University, Lucknow). 
+          B.Tech CSE student building scalable web applications with MongoDB, Express.js, React, and Node.js, while exploring AI, RAG, and intelligent software solutions.
+        </p>
+
+        <div class="grid grid-cols-3 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+          <div>
+            <p class="text-xl font-bold text-slate-900 dark:text-white">B.Tech</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Class of 2027</p>
+          </div>
+          <div>
+            <p class="text-xl font-bold text-indigo-600 dark:text-indigo-400">MERN</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Full-Stack Core</p>
+          </div>
+          <div>
+            <p class="text-xl font-bold text-emerald-600 dark:text-emerald-400">RAG & AI</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Vector Search</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Photo -->
+      <div class="md:col-span-5 flex flex-col items-center">
+        <div class="relative group w-64 sm:w-72">
+          <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-40 group-hover:opacity-75 blur transition duration-500"></div>
+
+          <div class="relative rounded-2xl overflow-hidden glass-card bg-white dark:bg-slate-900 shadow-2xl border border-slate-200 dark:border-slate-700">
+            <div class="relative h-80 sm:h-96 w-full overflow-hidden bg-slate-900 flex items-center justify-center">
+              <img id="profileImageDisplay" 
+                   src="image.png" 
+                   alt="Durgesh Pathak Profile" 
+                   class="w-full h-full object-cover transition duration-700 group-hover:scale-105" />
+              
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
+
+              <div class="absolute bottom-4 left-4 right-4 text-left">
+                <!-- <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500 text-white mb-1">
+                  MERN STACK DEV
+                </span> -->
+                <p class="text-base font-extrabold text-white flex items-center gap-1.5">
+                  Durgesh Pathak <i data-lucide="badge-check" class="w-4 h-4 text-cyan-400"></i>
+                </p>
+                <p class="text-xs text-slate-300">Software Engineer &bull; Lucknow</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 border-t border-slate-200 dark:border-slate-800/60 relative">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="mb-12">
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
+          <i data-lucide="user-check" class="text-indigo-500 w-7 h-7"></i> About Me
+        </h3>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-8 items-stretch">
+        <div class="md:col-span-8 glass-card p-8 rounded-2xl space-y-4">
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white">
+            Bridging Scalable MERN Systems with Emerging Machine Learning
+          </h4>
+          <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            I am a B.Tech <strong>Computer Science and Engineering (AI & ML)</strong> student at Khwaja Moinuddin Chishti Language University, Lucknow (2023–2027). I focus on building full-stack web applications using MongoDB, Express.js, React, and Node.js.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+            Alongside web development, I practice Data Structures & Algorithms and explore AI/ML and RAG-based applications. I enjoy turning ideas into practical, user-focused software and continuously improving my problem-solving and engineering skills.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs text-slate-500 dark:text-slate-400">Current Level</span>
+              <p class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-1">B.Tech CSE (Pre-Final/Final Year)</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs text-slate-500 dark:text-slate-400">Target Role</span>
+              <p class="text-sm sm:text-base font-bold text-indigo-600 dark:text-indigo-400 mt-1">SDE / MERN Dev</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs text-slate-500 dark:text-slate-400">Location</span>
+              <p class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-1">Lucknow, India</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Quick Connect Widget -->
+        <div class="md:col-span-4 glass-card p-6 rounded-2xl flex flex-col justify-between border-t-4 border-t-indigo-500">
+          <div>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+              <i data-lucide="share-2" class="w-4 h-4 text-indigo-500"></i> Direct Channels
+            </h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-5">
+              Feel free to message me on WhatsApp or Instagram for fast collaboration and inquiries.
+            </p>
+
+            <div class="space-y-3">
+              <a href="https://wa.me/919999999999?text=Hello%20Durgesh,%20I%20am%20reaching%20out%20from%20your%20portfolio." 
+                 target="_blank" 
+                 rel="noreferrer"
+                 class="flex items-center justify-between p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-950/60 transition group">
+                <div class="flex items-center gap-2.5 text-xs font-semibold">
+                  <i data-lucide="message-circle" class="w-4 h-4 text-emerald-500"></i>
+                  <span>WhatsApp Message</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition"></i>
+              </a>
+
+              <a href="https://instagram.com/" 
+                 target="_blank" 
+                 rel="noreferrer"
+                 class="flex items-center justify-between p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/40 text-rose-800 dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-rose-950/60 transition group">
+                <div class="flex items-center gap-2.5 text-xs font-semibold">
+                  <i data-lucide="instagram" class="w-4 h-4 text-rose-500"></i>
+                  <span>Instagram Direct</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition"></i>
+              </a>
+
+              <a href="https://linkedin.com/" 
+                 target="_blank" 
+                 rel="noreferrer"
+                 class="flex items-center justify-between p-3 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/40 text-sky-800 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-950/60 transition group">
+                <div class="flex items-center gap-2.5 text-xs font-semibold">
+                  <i data-lucide="linkedin" class="w-4 h-4 text-sky-500"></i>
+                  <span>LinkedIn Network</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="pt-5 border-t border-slate-200 dark:border-slate-800 text-xs text-center text-slate-500">
+            Available for discussions & collaborative projects
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Technical Arsenal Section -->
+  <section id="skills" class="py-20 border-t border-slate-200 dark:border-slate-800/60 bg-slate-100/50 dark:bg-slate-950/40">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="mb-12">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1">Capabilities</h2>
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
+          <i data-lucide="cpu" class="text-indigo-500 w-7 h-7"></i> Technical Arsenal
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Full stack technologies, algorithmic fundamentals, and AI libraries.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="glass-card p-6 rounded-2xl border-t-2 border-t-indigo-500">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 mb-4">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">MERN Stack</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Scalable enterprise web applications</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Express.js</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">Redux Toolkit</span>
+            <span class="skill-tag">JWT Auth</span>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border-t-2 border-t-emerald-500">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-4">
+            <i data-lucide="binary" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">DSA & Languages</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Algorithmic problem solving</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C / C++</span>
+            <span class="skill-tag">JavaScript ES6+</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Trees & Graphs</span>
+            <span class="skill-tag">Dynamic Prog</span>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border-t-2 border-t-cyan-500">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-500 mb-4">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">AI & RAG Systems</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Vector databases & LLM chains</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">RAG Pipelines</span>
+            <span class="skill-tag">Vector Embeddings</span>
+            <span class="skill-tag">ChromaDB / Pinecone</span>
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Document Parsing</span>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border-t-2 border-t-amber-500">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-4">
+            <i data-lucide="shield" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Dev Tools & Security</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Cloud hygiene & workflow tools</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">Firebase Firestore</span>
+            <span class="skill-tag">Cloud Security</span>
+            <span class="skill-tag">REST Architecture</span>
+            <span class="skill-tag">Postman</span>
+            <span class="skill-tag">Bash / Terminal</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 border-t border-slate-200 dark:border-slate-800/60 bg-slate-100/50 dark:bg-slate-950/40">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
+            <i data-lucide="folder-code" class="text-indigo-500 w-7 h-7"></i> Featured Projects
+          </h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Highlighted projects covering RAG systems, e-commerce, and administrative apps.</p>
+        </div>
+
+        <!-- Filter buttons -->
+        <div class="flex flex-wrap gap-2" id="filterContainer">
+          <button data-filter="all" class="filter-btn active px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition">All</button>
+          <button data-filter="ai" class="filter-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg glass-card text-slate-700 dark:text-slate-300 transition">AI / RAG</button>
+          <button data-filter="mern" class="filter-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg glass-card text-slate-700 dark:text-slate-300 transition">MERN Apps</button>
+          <button data-filter="systems" class="filter-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg glass-card text-slate-700 dark:text-slate-300 transition">Management</button>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6" id="projectsGrid">
+
+        <!-- Project 1 -->
+        <div class="project-card glass-card rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="ai">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                AI / Machine Learning
+              </span>
+              <button onclick="openProjectModal('rag')" class="text-slate-400 hover:text-indigo-600 dark:hover:text-white transition" title="View Architecture Specs">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Enterprise RAG Knowledge Engine</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5">
+              A high-precision Retrieval-Augmented Generation engine designed to ingest documents, generate semantic vector embeddings, and retrieve grounded contextual responses using LLM chains with zero hallucination.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Vector DB</span>
+              <span class="tech-badge">LangChain</span>
+              <span class="tech-badge">FastAPI</span>
+              <span class="tech-badge">React UI</span>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+              <button onclick="openProjectModal('rag')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                Deep Dive Specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+              <div class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                <a href="https://github.com/" target="_blank" rel="noreferrer" class="hover:text-slate-900 dark:hover:text-white flex items-center gap-1 text-xs">
+                  <i data-lucide="github" class="w-4 h-4"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card glass-card rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="mern">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                Full-Stack MERN
+              </span>
+              <button onclick="openProjectModal('amazon')" class="text-slate-400 hover:text-indigo-600 dark:hover:text-white transition" title="View Architecture Specs">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Amazon Full-Stack Platform Clone</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5">
+              Production-grade e-commerce replica incorporating MongoDB product catalogs, Express & Node REST APIs, React state management, user authentication, dynamic cart, and checkout simulator.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tech-badge">MongoDB</span>
+              <span class="tech-badge">Express.js</span>
+              <span class="tech-badge">React.js</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">JWT Security</span>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+              <button onclick="openProjectModal('amazon')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                Deep Dive Specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+              <div class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                <a href="https://github.com/" target="_blank" rel="noreferrer" class="hover:text-slate-900 dark:hover:text-white flex items-center gap-1 text-xs">
+                  <i data-lucide="github" class="w-4 h-4"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card glass-card rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="systems">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                Management & Analytics
+              </span>
+              <button onclick="openProjectModal('student')" class="text-slate-400 hover:text-indigo-600 dark:hover:text-white transition" title="View Architecture Specs">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Student Management & Analytics Portal</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5">
+              Comprehensive academic administration platform providing role-based student and faculty views, full CRUD operations, batch filtering, attendance charts, and real-time records queries.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tech-badge">MERN Architecture</span>
+              <span class="tech-badge">CRUD API</span>
+              <span class="tech-badge">Role Authorization</span>
+              <span class="tech-badge">Tailwind UI</span>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+              <button onclick="openProjectModal('student')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                Deep Dive Specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+              <div class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                <a href="https://github.com/" target="_blank" rel="noreferrer" class="hover:text-slate-900 dark:hover:text-white flex items-center gap-1 text-xs">
+                  <i data-lucide="github" class="w-4 h-4"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card glass-card rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="mern">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                WebSockets & MERN
+              </span>
+              <button onclick="openProjectModal('chat')" class="text-slate-400 hover:text-indigo-600 dark:hover:text-white transition" title="View Architecture Specs">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Real-Time Messaging & Collaboration</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5">
+              Live bi-directional communication workspace supporting persistent multi-room chat channels, live typing indicators, online presence, and instantaneous message delivery.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tech-badge">Socket.io</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">React.js</span>
+              <span class="tech-badge">MongoDB</span>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+              <button onclick="openProjectModal('chat')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                Deep Dive Specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+              <div class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                <a href="https://github.com/" target="_blank" rel="noreferrer" class="hover:text-slate-900 dark:hover:text-white flex items-center gap-1 text-xs">
+                  <i data-lucide="github" class="w-4 h-4"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-20 border-t border-slate-200 dark:border-slate-800/60 relative">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="mb-12">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1">Academics</h2>
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
+          <i data-lucide="graduation-cap" class="text-indigo-500 w-7 h-7"></i> Education & Professional Training
+        </h3>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="glass-card p-7 rounded-2xl relative overflow-hidden border-l-4 border-l-indigo-600">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                2023 &ndash; 2027 &bull; In Progress
+              </span>
+              <h4 class="text-xl font-bold text-slate-900 dark:text-white mt-3">B.Tech in Computer Science & Engineering</h4>
+              <p class="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-1">
+                Khwaja Moinuddin Chishti Language University (KMC LU)
+              </p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Lucknow, Uttar Pradesh, India</p>
+            </div>
+            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-500">
+              <i data-lucide="book-open" class="w-6 h-6"></i>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-4 leading-relaxed border-t border-slate-200 dark:border-slate-800/80 pt-4">
+            Rigorous core curriculum including Data Structures, Design and Analysis of Algorithms (DAA), Database Management Systems (DBMS), Operating Systems, and Object-Oriented Software Engineering.
+          </p>
+        </div>
+
+        <div class="glass-card p-7 rounded-2xl relative overflow-hidden border-l-4 border-l-cyan-500">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                Industry Certification
+              </span>
+              <h4 class="text-xl font-bold text-slate-900 dark:text-white mt-3">Cloud Security Analyst Training</h4>
+              <p class="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-1">
+                Upstream & Nimi
+              </p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Cybersecurity, Threat Analysis & Cloud Hygiene</p>
+            </div>
+            <div class="p-3 bg-cyan-500/10 rounded-xl text-cyan-500">
+              <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-4 leading-relaxed border-t border-slate-200 dark:border-slate-800/80 pt-4">
+            Hands-on specialized training focusing on cloud defense architectures, IAM permissions, container vulnerability reviews, API penetration testing, and enterprise defensive strategies.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 border-t border-slate-200 dark:border-slate-800/60 bg-slate-100/50 dark:bg-slate-950/40 relative">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1">Get In Touch</h2>
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">Let's Build Something Exceptional</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+          Available for software engineering opportunities, internships, and MERN stack collaborative products.
+        </p>
+      </div>
+
+      <div class="glass-card p-8 sm:p-10 rounded-3xl max-w-2xl mx-auto shadow-xl">
+        <form id="contactForm" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Your Name</label>
+              <input type="text" id="contactName" required placeholder="e.g. John Doe"
+                     class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 text-sm transition" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Your Email</label>
+              <input type="email" id="contactEmail" required placeholder="john@example.com"
+                     class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 text-sm transition" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Subject</label>
+            <input type="text" id="contactSubject" required placeholder="Project Inquiry / Job Opportunity"
+                   class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 text-sm transition" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Message</label>
+            <textarea id="contactMessage" rows="4" required placeholder="Write your message here..."
+                      class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 text-sm transition resize-none"></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <button type="submit" class="flex-1 py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30">
+              <i data-lucide="send" class="w-4 h-4"></i> Send Message
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sticky WhatsApp Floating Quick Action Button -->
+  <a href="https://wa.me/919999999999?text=Hello%20Durgesh,%20I%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect!" 
+     target="_blank" 
+     rel="noreferrer"
+     class="fixed bottom-6 right-6 z-40 p-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-2xl shadow-emerald-500/40 transition-transform duration-300 hover:scale-110 flex items-center justify-center group"
+     title="Instant WhatsApp Connect">
+    <i data-lucide="message-circle" class="w-6 h-6"></i>
+    <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-bold pl-0 group-hover:pl-2">
+      Chat with Durgesh
+    </span>
+  </a>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 Durgesh Pathak. Built with ❤️</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400">LinkedIn</a>
+        <a href="https://instagram.com/" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400">Instagram</a>
+        <a href="https://wa.me/919999999999" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Project Deep Dive -->
+  <div id="projectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="glass-card max-w-xl w-full rounded-3xl p-7 border border-slate-300 dark:border-slate-700 space-y-4 shadow-2xl relative bg-white dark:bg-slate-900">
+      <button onclick="closeProjectModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 dark:hover:text-white p-1 rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="modalContent"></div>
+      <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+        <button onclick="closeProjectModal()" class="px-5 py-2 text-xs font-semibold rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div id="toast" class="fixed bottom-6 left-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-3 px-4 py-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-indigo-500/50 shadow-2xl text-xs text-slate-800 dark:text-white">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
+    <span id="toastMessage">Success!</span>
+  </div>
+
+  <!-- Custom JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
